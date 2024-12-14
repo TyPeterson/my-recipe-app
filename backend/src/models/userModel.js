@@ -1,11 +1,18 @@
 const db = require('../config/db');
 
-function createUser(data) {
-  return db('users').insert(data).returning('*');
+async function createUser({ email, password_hash }) {
+  const [user] = await db('users')
+    .insert({ email, password_hash })
+    .returning('*');
+  return user;
 }
 
-function findUserByEmail(email) {
+async function findUserByEmail(email) {
   return db('users').where({ email }).first();
 }
 
-module.exports = { createUser, findUserByEmail };
+async function findUserById(id) {
+  return db('users').where({ id }).first();
+}
+
+module.exports = { createUser, findUserByEmail, findUserById };

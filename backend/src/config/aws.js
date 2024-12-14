@@ -1,4 +1,5 @@
 // intialize and export an S3 client from the aws-sdk package using environment variables
+require('dotenv').config();
 
 const AWS = require('aws-sdk');
 const s3 = new AWS.S3({
