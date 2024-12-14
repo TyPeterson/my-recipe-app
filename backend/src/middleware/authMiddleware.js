@@ -1,0 +1,1 @@
+// checks for a JWT in the request header and attach the user info to req.user
